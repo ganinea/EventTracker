@@ -1,5 +1,4 @@
-﻿using EventTracker.Domain;
-using EventTracker.Domain.Model;
+﻿using EventTracker.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,9 +14,11 @@ internal class ParcelMapping : IEntityTypeConfiguration<Parcel>
 
         builder.OwnsOne(x => x.LastEvent, x =>
         {
+            x.HasIndex(e => e.Id);
             x.Property(e => e.Type).HasMaxLength(50);
             x.Property(e => e.RunId).HasMaxLength(50);
             x.Property(e => e.StatusCode).HasMaxLength(50);
         });
+
     }
 }

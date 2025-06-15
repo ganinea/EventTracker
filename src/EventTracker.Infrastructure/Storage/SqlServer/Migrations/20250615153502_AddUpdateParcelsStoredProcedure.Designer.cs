@@ -4,6 +4,7 @@ using EventTracker.Infrastructure.Storage.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventTracker.Infrastructure.Storage.SqlServer.Migrations
 {
     [DbContext(typeof(SqlServerEventTrackerContext))]
-    partial class SqlServerEventTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20250615153502_AddUpdateParcelsStoredProcedure")]
+    partial class AddUpdateParcelsStoredProcedure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,8 +81,6 @@ namespace EventTracker.Infrastructure.Storage.SqlServer.Migrations
                                 .HasColumnType("nvarchar(50)");
 
                             b1.HasKey("ParcelId");
-
-                            b1.HasIndex("Id");
 
                             b1.ToTable("Parcels");
 
