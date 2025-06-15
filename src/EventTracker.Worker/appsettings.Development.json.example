@@ -1,7 +1,8 @@
 {
   "Storage": {
     "Provider": "SqlServer",
-    "ConnectionString": "<conn_string>"
+    "ConnectionString": "<conn_string>",
+    "ApplyMigrationsOnStartup": true
   },
 
   "Worker": {
