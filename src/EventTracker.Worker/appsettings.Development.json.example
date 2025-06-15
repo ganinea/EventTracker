@@ -1,0 +1,33 @@
+{
+  "Storage": {
+    "Provider": "SqlServer",
+    "ConnectionString": "<conn_string>"
+  },
+
+  "Worker": {
+    "Interval": "0.00:05:00"
+  },
+
+  "ScanEvent": {
+    "Url": "http://localhost/v1/scans/scanevents",
+    "BatchSize": 100,
+    "RetryCount": 3
+  },
+
+  "Serilog": {
+    "MinimumLevel": {
+      "Override": {
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "Enrich": [
+      "FromLogContext",
+      "WithExceptionDetails"
+    ],
+    "WriteTo": [
+      {
+        "Name": "Console"
+      }
+    ]
+  }
+}
