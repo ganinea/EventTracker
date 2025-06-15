@@ -14,6 +14,7 @@ public class StorageModule(IConfiguration configuration) : IModule
 {
     public void AddServices(IServiceCollection services)
     {
+        services.AddScoped<DatabaseMigrator>();
         services.AddCustomConfiguration<StorageConfiguration>(configuration);
 
         services.AddDbContext<SqlServerEventTrackerContext>((sp, contextOptions) =>

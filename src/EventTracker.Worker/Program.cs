@@ -2,6 +2,8 @@ using EventTracker;
 using EventTracker.Application;
 using EventTracker.Infrastructure;
 using EventTracker.Infrastructure.Common;
+using EventTracker.Infrastructure.Storage;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
 
@@ -17,6 +19,13 @@ try
     ConfigureServices(builder.Services, builder.Configuration);
 
     var host = builder.Build();
+    
+    using (var scope = host.Services.CreateScope())
+    {
+        var migrator = scope.ServiceProvider.GetRequiredService<DatabaseMigrator>();
+        migrator.Migrate();
+    }
+
     host.Run();
 }
 catch (Exception e)
