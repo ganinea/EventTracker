@@ -35,7 +35,7 @@ namespace EventTracker.Infrastructure.Storage.SqlServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parcels");
+                    b.ToTable("Parcels", (string)null);
                 });
 
             modelBuilder.Entity("EventTracker.Domain.Model.WorkerState", b =>
@@ -48,7 +48,7 @@ namespace EventTracker.Infrastructure.Storage.SqlServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkerStates");
+                    b.ToTable("WorkerStates", (string)null);
                 });
 
             modelBuilder.Entity("EventTracker.Domain.Model.Parcel", b =>
@@ -79,9 +79,7 @@ namespace EventTracker.Infrastructure.Storage.SqlServer.Migrations
 
                             b1.HasKey("ParcelId");
 
-                            b1.HasIndex("Id");
-
-                            b1.ToTable("Parcels");
+                            b1.ToTable("Parcels", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("ParcelId");
